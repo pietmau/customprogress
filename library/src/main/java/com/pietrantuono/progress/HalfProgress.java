@@ -34,15 +34,15 @@ public class HalfProgress extends View {
     private float suffixPadding;
     private float bottomHeight;
     private final int default_end_color = Color.WHITE;
-    private final int default_start_color = Color.rgb(70, 105, 166);
-    private final int default_color = Color.rgb(80, 150, 230);
+    private final int default_start_color = Color.rgb(255, 0, 0);
+    private final int default_color = Color.rgb(255, 0, 0);
     private final float default_stroke_width;
     private final float default_padding_suffix;
     private final float default_suffix_size;
     private final float default_bottom_size;
     private final String default_suffix;
     private final int default_max = 100;
-    private final float default_angle = 360 * 0.8f;
+    private final float default_angle = 360 * 0.5f;
     private float default_text_size;
     private final int min_size;
     private static final String STROKE_WIDTH = "stroke_width";
@@ -71,10 +71,8 @@ public class HalfProgress extends View {
 
     public HalfProgress(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
-        default_text_size = DpPx.sp2px(getResources(), 18);
+        default_text_size = DpPx.sp2px(getResources(), 9);
         min_size = (int) DpPx.dp2px(getResources(), 100);
-        default_text_size = DpPx.sp2px(getResources(), 40);
         default_suffix_size = DpPx.sp2px(getResources(), 15);
         default_padding_suffix = DpPx.dp2px(getResources(), 4);
         default_suffix = "%";

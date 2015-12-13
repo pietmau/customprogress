@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomProgress">
+        <attr name="custom_progress" format="integer"/>
+        <attr name="custom_max" format="integer"/>
+
+        <attr name="custom_start_color" format="color"/>
+        <attr name="custom_end_color" format="color"/>
+
+        <attr name="custom_text_size" format="dimension"/>
+        <attr name="custom_text_color" format="color"/>
+
+        <attr name="custom_prefix" format="string"/>
+        <attr name="custom_suffix" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="EmptyProgress">
+        <attr name="empty_progress" format="integer"/>
+        <attr name="empty_max" format="integer"/>
+
+        <attr name="empty_start_color" format="color"/>
+        <attr name="empty_end_color" format="color"/>
+
+        <attr name="empty_end_stroke_width" format="dimension"/>
+        <attr name="empty_start_stroke_width" format="dimension"/>
+
+        <attr name="empty_text_size" format="dimension"/>
+        <attr name="empty_text_color" format="color"/>
+
+        <attr name="empty_prefix" format="string"/>
+        <attr name="empty_suffix" format="string"/>
+        <attr name="empty_text" format="string"/>
+
+        <attr name="empty_background_color" format="color"/>
+
+        <attr name="empty_inner_text" format="string"/>
+        <attr name="empty_inner_text_size" format="dimension"/>
+        <attr name="empty_inner_text_color" format="color"/>
+
+        <attr name="empty_starting_degree" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="HalfProgress">
+        <attr name="half_progress" format="integer"/>
+        <attr name="half_angle" format="float"/>
+        <attr name="half_stroke_width" format="dimension"/>
+        <attr name="half_max" format="integer"/>
+
+        <attr name="half_start_color" format="color"/>
+        <attr name="half_end_color" format="color"/>
+
+        <attr name="half_text_size" format="dimension"/>
+        <attr name="half_text_color" format="color"/>
+
+        <attr name="half_suffix" format="string"/>
+        <attr name="half_suffix_size" format="dimension"/>
+        <attr name="half_suffix_padding" format="dimension"/>
+
+        <attr name="half_text" format="string"/>
+        <attr name="half_bottom_text_size" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundProgress">
+        <attr name="progress" format="integer" />
+        <attr name="progressbar_color" format="color" />
+        <attr name="background_progress_color" format="color" />
+        <attr name="progressbar_width" format="dimension" />
+        <attr name="background_progress_width" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="Themes">
+        <attr name="customProgressStyle" format="reference"/>
+        <attr name="emptyProgressStyle" format="reference"/>
+        <attr name="halfProgressStyle" format="reference"/>
+    </declare-styleable>
+</resources>

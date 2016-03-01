@@ -1,19 +1,12 @@
 package com.pietrantuono.testapp.half;
- 
- 
+
 import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
-import android.view.ViewGroup;
-
-import com.pietrantuono.progress.CustomProgress;
 import com.pietrantuono.progress.HalfProgress;
-import com.pietrantuono.testapp.EmptyActivity;
 import com.pietrantuono.testapp.HalfActivity;
-import com.pietrantuono.testapp.MainActivity;
 import com.pietrantuono.testapp.R;
 import com.robotium.solo.Solo;
-
 
 public class ConfigurationChangeTest extends ActivityInstrumentationTestCase2<HalfActivity> {
     private HalfActivity mainActivity;

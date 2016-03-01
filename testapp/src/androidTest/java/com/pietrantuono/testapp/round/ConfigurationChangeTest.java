@@ -1,19 +1,12 @@
 package com.pietrantuono.testapp.round;
 
-
 import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
-import android.view.ViewGroup;
-
-import com.pietrantuono.progress.CustomProgress;
 import com.pietrantuono.progress.RoundProgress;
-import com.pietrantuono.testapp.HalfActivity;
-import com.pietrantuono.testapp.MainActivity;
 import com.pietrantuono.testapp.R;
 import com.pietrantuono.testapp.RoundActivity;
 import com.robotium.solo.Solo;
-
 
 public class ConfigurationChangeTest extends ActivityInstrumentationTestCase2<RoundActivity> {
     private RoundActivity mainActivity;

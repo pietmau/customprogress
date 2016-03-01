@@ -1,17 +1,12 @@
 package com.pietrantuono.testapp.custom;
- 
- 
+
 import android.graphics.Color;
 import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.UiThreadTest;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import com.pietrantuono.progress.CustomProgress;
 import com.pietrantuono.testapp.MainActivity;
 import com.robotium.solo.Solo;
-
 
 public class MethodsTest extends ActivityInstrumentationTestCase2<MainActivity> {
     private MainActivity mainActivity;

@@ -1,20 +1,12 @@
 package com.pietrantuono.testapp.empty;
- 
- 
+
 import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
-import android.view.ViewGroup;
-
-import com.pietrantuono.progress.CustomProgress;
 import com.pietrantuono.progress.EmptyProgress;
-import com.pietrantuono.progress.HalfProgress;
-import com.pietrantuono.testapp.CustomActivity;
 import com.pietrantuono.testapp.EmptyActivity;
-import com.pietrantuono.testapp.MainActivity;
 import com.pietrantuono.testapp.R;
 import com.robotium.solo.Solo;
-
 
 public class ConfigurationChangeTest extends ActivityInstrumentationTestCase2<EmptyActivity> {
     private EmptyActivity mainActivity;

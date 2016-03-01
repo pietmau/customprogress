@@ -1,21 +1,14 @@
 package com.pietrantuono.testapp.custom;
 
-
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.UiThreadTest;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-
 import com.pietrantuono.progress.CustomProgress;
 import com.pietrantuono.testapp.MainActivity;
 import com.pietrantuono.testapp.R;
 import com.robotium.solo.Solo;
-
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -45,6 +38,7 @@ public class ConstructionTest extends ActivityInstrumentationTestCase2<MainActiv
         progress = 0;
     }
 
+    @SuppressWarnings("UnusedAssignment")
     public void testConstructor() {
         CustomProgress customProgress = new CustomProgress(mainActivity);
     }

@@ -261,11 +261,10 @@ public class HalfProgress extends View {
         super.onDraw(canvas);
         float startAngle = 270 - angle / 2f;
         float finishedSweepAngle = progress / (float) getMax() * angle;
-        float finishedStartAngle = startAngle;
         paint.setColor(startStrokeColor);
         canvas.drawArc(rectF, startAngle, angle, false, paint);
         paint.setColor(endStrokeColor);
-        canvas.drawArc(rectF, finishedStartAngle, finishedSweepAngle, false, paint);
+        canvas.drawArc(rectF, startAngle, finishedSweepAngle, false, paint);
 
         String text = String.valueOf(getProgress());
         if (!TextUtils.isEmpty(text)) {

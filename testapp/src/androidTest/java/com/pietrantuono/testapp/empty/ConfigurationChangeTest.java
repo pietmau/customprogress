@@ -3,24 +3,28 @@ package com.pietrantuono.testapp.empty;
  
 import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.pietrantuono.progress.CustomProgress;
 import com.pietrantuono.progress.EmptyProgress;
 import com.pietrantuono.progress.HalfProgress;
+import com.pietrantuono.testapp.CustomActivity;
+import com.pietrantuono.testapp.EmptyActivity;
 import com.pietrantuono.testapp.MainActivity;
+import com.pietrantuono.testapp.R;
 import com.robotium.solo.Solo;
 
 
-public class ConfigurationChangeTest extends ActivityInstrumentationTestCase2<MainActivity> {
-    private MainActivity mainActivity;
+public class ConfigurationChangeTest extends ActivityInstrumentationTestCase2<EmptyActivity> {
+    private EmptyActivity mainActivity;
     private Solo solo;
     private int progress;
     private EmptyProgress customProgress;
     private Handler h;
 
     public ConfigurationChangeTest() {
-        super(MainActivity.class); 
+        super(EmptyActivity.class);
     } 
 
     @Override 
@@ -33,34 +37,21 @@ public class ConfigurationChangeTest extends ActivityInstrumentationTestCase2<Ma
     public void tearDown() throws Exception {
         solo.finishOpenedActivities();
         progress=0;
-    } 
+    }
 
     public void testRotation() throws InterruptedException {
-        customProgress= new EmptyProgress(mainActivity);
-        customProgress.setProgress(50);
-        final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(400,400);
-        mainActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mainActivity.addContentView(customProgress, layoutParams);
-            }
-        });
-        Thread.sleep(2*1000);
         solo.setActivityOrientation(Solo.LANDSCAPE);
-        assertEquals(customProgress.getProgress(), 50);
+        solo.sleep(2 * 1000);
+        solo.setActivityOrientation(Solo.PORTRAIT);
+        solo.sleep(2 * 1000);
+        mainActivity= (EmptyActivity) solo.getCurrentActivity();
+        View v = mainActivity.findViewById(R.id.foo);
+        assertTrue(v.getVisibility() == View.VISIBLE);
     }
+
     public void testLitmus() throws InterruptedException {
-        customProgress= new EmptyProgress(mainActivity);
-        customProgress.setProgress(50);
-        final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(400,400);
-        mainActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mainActivity.addContentView(customProgress, layoutParams);
-            }
-        });
-        Thread.sleep(2 * 1000);
         solo.setActivityOrientation(Solo.LANDSCAPE);
-        assertFalse(customProgress.getProgress() == 20);
+        View v = mainActivity.findViewById(R.id.foo);
+        assertTrue(v.getVisibility() == View.VISIBLE);
     }
 }

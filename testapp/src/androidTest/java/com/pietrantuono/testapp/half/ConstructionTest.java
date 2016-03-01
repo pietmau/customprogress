@@ -1,6 +1,7 @@
 package com.pietrantuono.testapp.half;
  
  
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
@@ -13,6 +14,9 @@ import com.pietrantuono.testapp.MainActivity;
 import com.pietrantuono.testapp.R;
 import com.robotium.solo.Solo;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
 
 public class ConstructionTest extends ActivityInstrumentationTestCase2<MainActivity> {
     private MainActivity mainActivity;
@@ -20,6 +24,7 @@ public class ConstructionTest extends ActivityInstrumentationTestCase2<MainActiv
     private int progress;
     private HalfProgress customProgress;
     private Handler h;
+    private CountDownLatch countDownLatch;
 
     public ConstructionTest() {
         super(MainActivity.class); 
@@ -45,26 +50,43 @@ public class ConstructionTest extends ActivityInstrumentationTestCase2<MainActiv
         LayoutInflater layoutInflater=mainActivity.getLayoutInflater();
         layoutInflater.inflate(R.layout.simple,null);
     }
-    @UiThreadTest
+
     public void testSetProgress() throws InterruptedException {
         customProgress= new HalfProgress(mainActivity);
         final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(400,400);
-        mainActivity.addContentView(customProgress,layoutParams);
-        h =new Handler(mainActivity.getMainLooper());
-        h.postDelayed(new ProgressRunnable(), 10);
-        solo.sleep(1* 1000+20);
+        countDownLatch = new CountDownLatch(1);
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mainActivity.addContentView(customProgress, layoutParams);
+                new ProgressTask().execute();
+            }
+        });
+        countDownLatch.await(10, TimeUnit.SECONDS);
     }
 
+    private class ProgressTask extends AsyncTask<Void, Integer, Void> {
 
-
-    private class ProgressRunnable implements Runnable{
         @Override
-        public void run() {
-            if(progress>100)return;
-            customProgress.setProgress(progress);
-            progress++;
-            h.postDelayed(new ProgressRunnable(),10);
+        protected Void doInBackground(Void... params) {
+            for (int i = 0; i <= 100; i++) {
+                publishProgress(i);
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            customProgress.setProgress(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            countDownLatch.countDown();
         }
     }
- 
 } 

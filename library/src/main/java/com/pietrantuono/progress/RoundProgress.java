@@ -26,12 +26,12 @@ public class RoundProgress extends View {
     private Paint backPaint;
     private Paint paint;
 
-    private static final String STATE="state";
-    private static final String PROGRESS="progress";
-    private static final String STROKE_WIDTH="stroke_width";
-    private static final String BACK_STROKE_WIDTH="back_stroke_width";
-    private static final String COLOR="color";
-    private static final String BACKGROUND_COLOR="background_color";
+    private static final String STATE = "state";
+    private static final String PROGRESS = "progress";
+    private static final String STROKE_WIDTH = "stroke_width";
+    private static final String BACK_STROKE_WIDTH = "back_stroke_width";
+    private static final String COLOR = "color";
+    private static final String BACKGROUND_COLOR = "background_color";
 
     public RoundProgress(Context context) {
         this(context, null);
@@ -42,12 +42,11 @@ public class RoundProgress extends View {
         initAttrs(context, attrs);
         initPaint();
         initRec();
+        this.setWillNotDraw(false);
     }
 
     @Override
     public void invalidate() {
-        initPaint();
-        initRec();
         super.invalidate();
     }
 
@@ -55,7 +54,7 @@ public class RoundProgress extends View {
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.RoundProgress, 0, 0);
         try {
             progress = typedArray.getFloat(R.styleable.RoundProgress_progress, progress);
-            strokeWidth = typedArray.getDimension(R.styleable.RoundProgress_progressbar_width,7f);
+            strokeWidth = typedArray.getDimension(R.styleable.RoundProgress_progressbar_width, 7f);
             backStrokeWidth = typedArray.getDimension(R.styleable.RoundProgress_background_progress_width, 3f);
             color = typedArray.getInt(R.styleable.RoundProgress_progressbar_color, color);
             backgroundColor = typedArray.getInt(R.styleable.RoundProgress_background_progress_color, backgroundColor);
@@ -64,7 +63,7 @@ public class RoundProgress extends View {
         }
     }
 
-    protected void initPaint(){
+    protected void initPaint() {
         backPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         backPaint.setColor(backgroundColor);
         backPaint.setStyle(Paint.Style.STROKE);
@@ -74,7 +73,8 @@ public class RoundProgress extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(strokeWidth);
     }
-    protected  void initRec(){
+
+    protected void initRec() {
         rectF = new RectF();
     }
 
@@ -177,19 +177,19 @@ public class RoundProgress extends View {
         bundle.putFloat(STROKE_WIDTH, strokeWidth);
         bundle.putFloat(BACK_STROKE_WIDTH, backStrokeWidth);
         bundle.putInt(COLOR, color);
-        bundle.putInt(BACKGROUND_COLOR,backgroundColor);
+        bundle.putInt(BACKGROUND_COLOR, backgroundColor);
         return bundle;
     }
 
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
-        if(state instanceof Bundle) {
+        if (state instanceof Bundle) {
             final Bundle bundle = (Bundle) state;
-            progress=bundle.getFloat(PROGRESS);
+            progress = bundle.getFloat(PROGRESS);
             strokeWidth = bundle.getFloat(STROKE_WIDTH);
-            backStrokeWidth=bundle.getFloat(BACK_STROKE_WIDTH);
-            color=bundle.getInt(COLOR);
-            backgroundColor=bundle.getInt(BACKGROUND_COLOR);
+            backStrokeWidth = bundle.getFloat(BACK_STROKE_WIDTH);
+            color = bundle.getInt(COLOR);
+            backgroundColor = bundle.getInt(BACKGROUND_COLOR);
             initPaint();
             initRec();
             super.onRestoreInstanceState(bundle.getParcelable(STATE));
@@ -197,7 +197,6 @@ public class RoundProgress extends View {
         }
         super.onRestoreInstanceState(state);
     }
-
 
 
 }

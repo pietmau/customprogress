@@ -1,2 +1,3 @@
-Custom view
-Tests included (in testapp dir)
+Simple custom progress view 
+
+Tests are included (in testapp dir)
